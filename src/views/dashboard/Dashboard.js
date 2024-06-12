@@ -1,11 +1,7 @@
 import React from 'react';
-import { Grid, Box, Typography } from '@mui/material';
+import DashboardCard from '../../components/shared/DashboardCard';
 import PageContainer from 'src/components/container/PageContainer';
-
-// components
-import SalesOverview from './components/SalesOverview';
-import MonthlyEarnings from './components/MonthlyEarnings';
-
+import { Box, Typography } from '@mui/material';
 
 const Dashboard = () => {
   const localData = window.localStorage.getItem('loggedFocusEvent');
@@ -14,31 +10,26 @@ const Dashboard = () => {
       <PageContainer title="Bienvenido a nuestro Dashboard" description="Bienvenido a nuestro servicio">
         <Box>
           <Typography variant="h5">
-            ¡Bienvenido! Inicia Sesión y disfruta de tus eventos!.
+            Inicia sesión para ver este Dashboard
           </Typography>
           {/* Puedes agregar más contenido o enlaces de registro aquí */}
         </Box>
       </PageContainer>
     );
   }
+  
   return (
-    <PageContainer title="Dashboard" description="this is Dashboard">
-      <Box>
-        <Grid container spacing={3}>
-          <Grid item xs={12} lg={8}>
-            <SalesOverview />
-          </Grid>
-          <Grid item xs={12} lg={8}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <MonthlyEarnings />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Box>
-    </PageContainer>
-  );
+    <DashboardCard title="Bienvenido al Dashboard">
+
+      <iframe
+        src="http://localhost:8050" // Cambia la URL a la dirección donde se está ejecutando tu aplicación Dash
+        title="Dashboard"
+        width="100%"
+        height="800px"
+        frameBorder="0"
+      />
+    </DashboardCard>
+  )
 };
 
 export default Dashboard;

@@ -24,9 +24,9 @@ const Evento = () => {
     ///////////////////////////////</EDITED>
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
-    const localData = window.localStorage.getItem('loggedFocusEvent');
-    const localDataParsed = JSON.parse(localData);
-    const token = JSON.parse(localDataParsed.token);
+    // const localData = window.localStorage.getItem('loggedFocusEvent');
+    // const localDataParsed = JSON.parse(localData);
+    // const token = JSON.parse(localDataParsed.token);
     const handleDisponibleChange = (event) => {
         setDisponibleEdited(event.target.value === 'true');
     };

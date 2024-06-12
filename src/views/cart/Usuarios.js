@@ -25,7 +25,7 @@ const Usuarios = () => {
 
   const [openDeleteConfirmation, setOpenDeleteConfirmation] = useState(false);
 
-  const [open, setOpen] = useState(false);
+  const [, setOpen] = useState(false);
   const handleOpenDeleteConfirmation = (usuario) => {
     setSelectedUsuario(usuario);
     setOpenDeleteConfirmation(true);
@@ -33,7 +33,7 @@ const Usuarios = () => {
   const handleDeleteUsuario = async () => {
     deleteUsuario({ variables: { id: selectedUsuario.id } });
     try {
-      const response = await deleteUsuario({ variables: { id: selectedUsuario.id } });
+      await deleteUsuario({ variables: { id: selectedUsuario.id } });
 
       setSnackbarMessage('Usuario eliminado correctamente');
       setSnackbarOpen(true);

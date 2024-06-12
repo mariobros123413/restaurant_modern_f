@@ -1,7 +1,4 @@
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
-import img1 from 'src/assets/images/backgrounds/rocket.png';
-import { Link } from 'react-router-dom';
 
 
 
@@ -9,7 +6,6 @@ export const Upgrade = () => {
     const localData = window.localStorage.getItem('loggedFocusEvent');
     const localDataParsed = localData ? JSON.parse(localData) : null;
     const token = localDataParsed ? JSON.parse(localDataParsed.token) : null;
-    const isLoggedIn = token !== null;
     if (token) {
         return <></>;
     }

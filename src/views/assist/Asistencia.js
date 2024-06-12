@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PageContainer from 'src/components/container/PageContainer';
 import DashboardCard from '../../components/shared/DashboardCard';
-import { Typography, Button, TextField, Card, CardContent, CardActions, Dialog, DialogTitle, DialogContent, DialogContentText, Snackbar, Modal, DialogActions } from '@mui/material';
+import { Typography, Button, TextField, Card, CardContent, CardActions, Dialog, DialogTitle, DialogContent, DialogContentText, Snackbar, DialogActions } from '@mui/material';
 import api from 'src/axiosInstance';
-import { useNavigate } from 'react-router-dom';
 import { jsPDF } from "jspdf";
-import { PedidoInput } from './interfazPedidoInput';
 import 'jspdf-autotable';
 import FACTURA_MUTATION from 'src/graphql/factura_mutations';
 import { useMutation } from '@apollo/client';
 const Asistencia = () => {
-  const navigate = useNavigate();
 
   const localData = window.localStorage.getItem('loggedFocusEvent');
   const localDataParsed = JSON.parse(localData);
@@ -23,7 +20,6 @@ const Asistencia = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const handleClose = () => setOpen(false);
-  const handleOpenCreate = () => setOpen(true);
   const [codigo, setCodigo] = useState('');
   const [openElim, setOpenElim] = useState(false);
   const handleCloseElim = () => setOpenElim(false);
@@ -66,18 +62,10 @@ const Asistencia = () => {
       console.error('Error al obtener eventos:', error);
     }
   };
-  const handleNavigateFotos = async (idevento, idgaleria) => {
-    try {
-      navigate(`/evento/${idevento}/${idgaleria}/fotos`);
-      obtenerAsistencias();
-    } catch (error) {
-      // Manejar errores, por ejemplo, mostrar un mensaje al usuario
-      console.error('Error al crear la reunión:', error);
-    }
-  };
   const parsePlato = (platoString) => {
     try {
       // Eliminar corchetes y espacios al inicio y final de la cadena
+      // eslint-disable-next-line
       const matches = platoString.match(/\{cantidad:\s*\d+,\s*nombre:\s*[^\}]+\}/g);
 
       // Crear un array para almacenar los objetos de plato
@@ -86,6 +74,7 @@ const Asistencia = () => {
       // Iterar sobre cada coincidencia
       matches.forEach(match => {
         // Usar expresión regular para extraer la cantidad y el nombre del plato de la coincidencia actual
+        // eslint-disable-next-line
         const itemMatch = /\{cantidad:\s*(\d+),\s*nombre:\s*([^\}]+)\}/.exec(match);
         if (itemMatch) {
           // Obtener la cantidad y el nombre del plato
@@ -140,7 +129,6 @@ const Asistencia = () => {
       const platos = parsePlato(pedidoSeleccionado.plato);
       const bebidas = parsePlato(pedidoSeleccionado.bebida);
       const fechaActual = new Date().toISOString().split('T')[0];
-      const horaActual = new Date().toLocaleTimeString();
       const pedido = {
         nro_pedido: pedidoSeleccionado.nro_pedido.toString(),
         id_mesero: pedidoSeleccionado.id_mesero.toString(),
@@ -268,7 +256,7 @@ const Asistencia = () => {
         </Button> */}
         {/* Bucle para mostrar tarjetas de eventos */}
         {asistencias.map((pedido) => (
-          <Card key={pedido.nro_mesa} style={{ marginTop: '16px' }} >
+          <Card key={pedido.nro_pedido} style={{ marginTop: '16px' }} >
             <CardContent>
               <Typography variant="h5" component="div">
                 Nro Pedido : {pedido.nro_pedido}

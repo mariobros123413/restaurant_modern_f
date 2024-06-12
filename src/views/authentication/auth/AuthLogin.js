@@ -26,7 +26,7 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
     const [password, setPassword] = useState('');
     const [, setUser] = useState(null);
     const [, setToken] = useState(null);
-    const [login, { data, error }] = useMutation(LOGIN_MUTATION); // Usa la mutación
+    const [login] = useMutation(LOGIN_MUTATION); // Usa la mutación
 
     useEffect(() => {
         const loggedJSON = window.localStorage.getItem('loggedFocusEvent');

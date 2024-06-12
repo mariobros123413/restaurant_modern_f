@@ -1,5 +1,5 @@
 import {
-  IconAperture, IconCopy, IconFileInvoice,IconShoppingCartPlus,IconFileReport, IconBrandAirtable,IconUsers,IconMeat,IconLayoutDashboard, IconBrandCashapp, IconLogin, IconGift, IconMoodHappy, IconTypography, IconUserPlus, IconLogout, IconCalendarEvent, IconShoppingCart
+  IconAperture, IconCopy, IconFileInvoice,IconShoppingCartPlus,IconFileReport, IconBrandAirtable,IconUsers,IconMeat,IconLayoutDashboard, IconLogin, IconMoodHappy, IconTypography, IconUserPlus, IconLogout,
 } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
