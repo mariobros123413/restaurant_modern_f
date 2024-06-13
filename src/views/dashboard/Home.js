@@ -42,7 +42,7 @@ const Home = () => {
                             <Box display="flex" alignItems="center" justifyContent="center">
                                 <img
                                     className="headerImg"
-                                    src="https://scontent.fvvi1-1.fna.fbcdn.net/v/t1.15752-9/398308058_806063907871492_736907878499778318_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=PsjjU9sPNUoAX_p-Tnl&_nc_ht=scontent.fvvi1-1.fna&oh=03_AdRwWHrq_FhGIgHGauc5Wyj1DsWjCuylSRreqGK-dcBSsg&oe=656CF82D"
+                                    src="https://scontent.fvvi1-2.fna.fbcdn.net/v/t1.15752-9/448181411_834334038556433_7077227109625534536_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=aO2PWOshcm0Q7kNvgEGQVsJ&_nc_ht=scontent.fvvi1-2.fna&oh=03_Q7cD1QH7yw7LUfTJGcvvfPy0XcaLYskxjwEVzgpDT9gXwO9jog&oe=6691EB24"
                                     alt=""
                                     height='200'
                                 />

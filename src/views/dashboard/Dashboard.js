@@ -5,6 +5,7 @@ import { Box, Typography } from '@mui/material';
 
 const Dashboard = () => {
   const localData = window.localStorage.getItem('loggedFocusEvent');
+  
   if (localData === null) {
     return (
       <PageContainer title="Bienvenido a nuestro Dashboard" description="Bienvenido a nuestro servicio">
@@ -17,12 +18,11 @@ const Dashboard = () => {
       </PageContainer>
     );
   }
-  
+
   return (
     <DashboardCard title="Bienvenido al Dashboard">
-
       <iframe
-        src="http://localhost:8050" // Cambia la URL a la dirección donde se está ejecutando tu aplicación Dash
+        src="https://diagramapy-v1-1.onrender.com/" // Cambia la URL a la dirección donde se está ejecutando tu aplicación Dash
         title="Dashboard"
         width="100%"
         height="800px"

@@ -13,7 +13,7 @@ const Logo = () => {
     <LinkStyled to="/">
       <img
         className="headerImg"
-        src="https://scontent.fvvi1-1.fna.fbcdn.net/v/t1.15752-9/396709202_1049906952677975_1223164373365173731_n.png?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=4E4p8O-vFEEAX-zlRF_&_nc_ht=scontent.fvvi1-1.fna&oh=03_AdR6jr8D9BQWPcnSgeBuy5KL1sWk1nRqmV0Y4s12dY-5Kw&oe=656CEE8A"
+        src="https://scontent.fvvi1-2.fna.fbcdn.net/v/t1.15752-9/448181411_834334038556433_7077227109625534536_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=aO2PWOshcm0Q7kNvgEGQVsJ&_nc_ht=scontent.fvvi1-2.fna&oh=03_Q7cD1QH7yw7LUfTJGcvvfPy0XcaLYskxjwEVzgpDT9gXwO9jog&oe=6691EB24"
         alt=""
         height={90}
       />    </LinkStyled>
