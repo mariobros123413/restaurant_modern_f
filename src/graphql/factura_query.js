@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 const FACTURA_QUERY = gql`
-    query Facturas {
-        facturas {
+    query GetFacturas {
+        getFacturas {
             nro
             total
             fecha
@@ -10,7 +10,7 @@ const FACTURA_QUERY = gql`
                 id
                 nombre_usuario
                 password
-                isAdmin
+                role
             }
             pedido {
                 nro_pedido

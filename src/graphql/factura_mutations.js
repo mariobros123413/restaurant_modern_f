@@ -10,7 +10,7 @@ const FACTURA_MUTATION = gql`
                 id
                 nombre_usuario
                 password
-                isAdmin
+                role
             }
             pedido {
                 nro_pedido

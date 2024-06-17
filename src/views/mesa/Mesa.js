@@ -9,7 +9,7 @@ import MESA_MUTATION from 'src/graphql/mesa_mutations';
 import MESA_UPDATE_MUTATION from 'src/graphql/mesa_update_mutation';
 import MESA_DELETE_MUTATION from 'src/graphql/mesa_delete_mutation';
 
-const Evento = () => {
+const Mesa = () => {
     const [open, setOpen] = useState(false);
     const [openElim, setOpenElim] = useState(false);
     const [openEdit, setOpenEdit] = useState(false);
@@ -39,8 +39,8 @@ const Evento = () => {
 
     useEffect(() => {
         if (data) {
-            console.log(data.mesas); // Aquí puedes trabajar con los datos obtenidos
-            setMesas(data.mesas);
+            console.log(data.getMesas); // Aquí puedes trabajar con los datos obtenidos
+            setMesas(data.getMesas);
         }
     }, [data]);
     if (loading) return <p>Loading...</p>;
@@ -88,12 +88,15 @@ const Evento = () => {
         try {
             const response = await createMesa({
                 variables: {
-                    id_usuario: "666751c4b3bf20449ba12ec0", // Suponiendo que el ID del usuario viene del evento seleccionado
+                    id_usuario: "9048959189705224976", // Suponiendo que el ID del usuario viene del evento seleccionado
                     nro: parseInt(nombre, 10), // Suponiendo que estás usando nombreEdited como número
                     capacidad: parseInt(descripcion, 10), // Asegúrate de convertirlo a Int
                     disponible: true // Convierte la disponibilidad a booleano
                 }
             });
+            if (response.data.createMesa == null)
+                throw new Error("Mesa existente");
+
             setSnackbarMessage('Mesa creada correctamente');
             setSnackbarOpen(true);
             setOpen(false);
@@ -223,7 +226,7 @@ const Evento = () => {
                             onChange={handleDescripcionChange}
                         />
                         <Button variant="contained" color="primary" onClick={handleCreateMesa} style={{ marginTop: 16 }}>
-                            Crear evento
+                            Crear mesa
                         </Button>
                         <Button variant="contained" color="warning" onClick={handleClose} style={{ marginTop: 16, marginLeft: 20 }}>
                             Cancelar
@@ -319,4 +322,4 @@ const Evento = () => {
     );
 };
 
-export default Evento;
+export default Mesa;

@@ -1,14 +1,15 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
-const USUARIO_UPDATE_MUTATION = gql`
-    mutation UpdateUsuario($id:ID!, $nombre_usuario: String!, $password: String!, $isAdmin: Boolean!){
-        updateUsuario(id: $id, nombre_usuario: $nombre_usuario, password: $password, isAdmin: $isAdmin) {
-            id
-            nombre_usuario
-            password
-            isAdmin
-        }
+const UPDATE_USUARIO_MUTATION = gql`
+  mutation UpdateUsuario($usuario: NewUser!) {
+    updateUsuario(usuario: $usuario) {
+      id
+      nombre_usuario
+      email
+      password
+      role
     }
+  }
 `;
 
-export default USUARIO_UPDATE_MUTATION;
+export default UPDATE_USUARIO_MUTATION;

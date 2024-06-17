@@ -1,12 +1,13 @@
 import { gql } from "@apollo/client";
 
 const USUARIO_MUTATION = gql`
-    mutation CreateUsuario($nombreUsuario: String!, $password: String!, $admin: Boolean!){
-        createUsuario(nombreUsuario: $nombreUsuario, password: $password, admin: $admin) {
+    mutation CreateUsuario($usuario: NewUser!){
+        createUsuario(usuario: $usuario) {
             id
             nombre_usuario
+            email
             password
-            isAdmin
+            role
         }
     }
 `;

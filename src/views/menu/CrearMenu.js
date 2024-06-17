@@ -21,7 +21,7 @@ const CreateMenu = ({ open, onClose }) => {
         const platoInput = platos.map(plato => ({ cantidad: parseInt(plato.cantidad), nombre: plato.nombre }));
         const bebidaInput = bebidas.map(bebida => ({ cantidad: parseInt(bebida.cantidad), nombre: bebida.nombre }));
 
-        createMenu({ variables: { id_usuario: "666751c4b3bf20449ba12ec0", fecha: todayDate, plato: platoInput, bebida: bebidaInput } });
+        createMenu({ variables: { id_usuario: "9048959189705224976", fecha: todayDate, plato: platoInput, bebida: bebidaInput } });
     };
 
     return (

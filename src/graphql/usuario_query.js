@@ -1,12 +1,13 @@
 import { gql } from "@apollo/client";
 
 const USUARIO_QUERY = gql`
-query Usuarios {
-    usuarios {
+query GetUsers {
+    getUsers {
         id
         nombre_usuario
+        email
         password
-        isAdmin
+        role
     }
 }
 `;

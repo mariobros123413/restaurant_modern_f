@@ -32,7 +32,7 @@ const Factura = () => {
     return (
         <Container>
             <Grid container spacing={4}>
-                {data.facturas.map((factura) => (
+                {data.getFacturas.map((factura) => (
                     <Grid item xs={12} sm={6} md={4} key={factura.nro}>
                         <Card>
                             <CardContent>

@@ -4,9 +4,7 @@ import React from 'react';
 
 export const Upgrade = () => {
     const localData = window.localStorage.getItem('loggedFocusEvent');
-    const localDataParsed = localData ? JSON.parse(localData) : null;
-    const token = localDataParsed ? JSON.parse(localDataParsed.token) : null;
-    if (token) {
+    if (localData==null) {
         return <></>;
     }
     return (

@@ -15,12 +15,11 @@ const TypographyPage = Loadable(lazy(() => import('../views/utilities/Typography
 const Shadow = Loadable(lazy(() => import('../views/utilities/Shadow')))
 const Register = Loadable(lazy(() => import('../views/authentication/Register')));
 const Login = Loadable(lazy(() => import('../views/authentication/Login')));
-const Evento = Loadable(lazy(() => import('../views/events/Evento')));
-const Asistencia = Loadable(lazy(() => import('../views/assist/Asistencia')));
-const SubirFotos = Loadable(lazy(() => import('../views/photos/SubirFotos')));
-const Menu = Loadable(lazy(() => import('../views/cart/Menu')));
-const Usuarios = Loadable(lazy(() => import('../views/cart/Usuarios')));
-const Reportes = Loadable(lazy(() => import('../views/order/Reporte')));
+const Mesa = Loadable(lazy(() => import('../views/mesa/Mesa')));
+const Pedido = Loadable(lazy(() => import('../views/pedido/Pedido')));
+const Menu = Loadable(lazy(() => import('../views/menu/Menu')));
+const Usuarios = Loadable(lazy(() => import('../usuario/Usuarios')));
+const Reportes = Loadable(lazy(() => import('../views/reporte/Reporte')));
 const Suscripcion = Loadable(lazy(() => import('../views/suscription/Suscripcion')));
 const Dashboard = Loadable(lazy(() => import('../views/dashboard/Dashboard')))
 
@@ -36,9 +35,8 @@ const Router = [
       { path: '/ui/typography', exact: true, element: <TypographyPage /> },
       { path: '/ui/shadow', exact: true, element: <Shadow /> },
       { path: '/menu', exact: true, element: <Menu /> },
-      { path: '/pedido', exact: true, element: <Asistencia /> },////////
-      { path: '/asistencia/:nombre/:idgaleria', exact: true, element: <SubirFotos /> },
-      { path: '/mesa', exact: true, element: <Evento /> },
+      { path: '/pedido', exact: true, element: <Pedido /> },////////
+      { path: '/mesa', exact: true, element: <Mesa /> },
       { path: '/usuario', exact: true, element: <Usuarios /> },
       { path: '/factura', exact: true, element: <Factura /> },
       { path: '/reporte', exact: true, element: <Reportes /> },

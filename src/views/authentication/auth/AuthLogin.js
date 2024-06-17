@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField';
 
 import { useMutation } from '@apollo/client';
-import  LOGIN_MUTATION  from '../../../graphql/login_mutations.js'; // Importa la mutación desde tu archivo de consultas GraphQL
+import LOGIN_MUTATION from '../../../graphql/login_mutations.js'; // Importa la mutación desde tu archivo de consultas GraphQL
 
 // Definición de la mutación GraphQL
 
@@ -48,9 +48,9 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
             const response = await login({
                 variables: { username, password } // Pasa las variables a la mutación
             });
-            const token = JSON.stringify(response.data.login);
+            const token = response.data.login;
             // Almacena la información del usuario en el estado local
-            window.localStorage.setItem('loggedFocusEvent', JSON.stringify({  token }));
+            window.localStorage.setItem('loggedFocusEvent', token);
             setToken(token);
             // Aquí puedes redirigir a la página de inicio o hacer otras operaciones después del inicio de sesión exitoso
             navigate('/dashboard');

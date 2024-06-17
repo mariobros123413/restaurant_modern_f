@@ -11,7 +11,7 @@ const MESA_MUTATION = gql`
                 id
                 nombre_usuario
                 password
-                isAdmin
+                role
             }
         }
     }

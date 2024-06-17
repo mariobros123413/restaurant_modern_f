@@ -66,7 +66,7 @@ const Menu = () => {
         setDialogOpen(false);
     };
     const todayDate = format(new Date(), 'dd-MM-yyyy');
-    const todayMenu = data?.menus?.find((menu) => menu.fecha === todayDate);
+    const todayMenu = data?.getAllMenus?.find((menu) => menu.fecha === todayDate);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
@@ -129,7 +129,7 @@ const Menu = () => {
             </DashboardCard>
             <DashboardCard title="Menús Anteriores">
                 <Grid container spacing={3}>
-                    {data?.menus
+                    {data?.getAllMenus
                         ?.filter((menu) => menu.fecha !== todayDate)
                         .map((menu) => (
                             <Grid item xs={12} sm={6} md={4} key={menu.id}>

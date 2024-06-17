@@ -4,10 +4,8 @@ import {
 
 import { uniqueId } from 'lodash';
 const localData = window.localStorage.getItem('loggedFocusEvent');
-const localDataParsed = localData ? JSON.parse(localData) : null;
-console.log(localDataParsed)
-const token = localDataParsed ? JSON.parse(localDataParsed.token) : null;
-const isLoggedIn = token !== null;
+
+console.log(localData)
 
 const Menuitems = [
   {
@@ -25,37 +23,37 @@ const Menuitems = [
     navlabel: true,
     subheader: 'Utilidades',
   },
-  isLoggedIn && {
+  localData!=null && {
     id: uniqueId(),
     title: 'Menú de Hoy',
     icon: IconMeat,
     href: '/menu',
   },
-  isLoggedIn && {
+  localData!=null && {
     id: uniqueId(),
     title: 'Pedidos',
     icon: IconShoppingCartPlus,
     href: '/pedido',
   },
-  isLoggedIn && {
+  localData!=null && {
     id: uniqueId(),
     title: 'Mesas',
     icon: IconBrandAirtable,
     href: '/mesa',
   },
-  isLoggedIn && {
+  localData!=null && {
     id: uniqueId(),
     title: 'Gestion Usuario',
     icon: IconUsers,
     href: '/usuario',
   },
-  isLoggedIn && {
+  localData!=null && {
     id: uniqueId(),
     title: 'Reportes',
     icon: IconFileReport,
     href: '/reporte',
   },
-  isLoggedIn && {
+  localData!=null && {
     id: uniqueId(),
     title: 'Facturas',
     icon: IconFileInvoice,
@@ -77,13 +75,13 @@ const Menuitems = [
     navlabel: true,
     subheader: 'Autenticación',
   },
-  !isLoggedIn && {
+  localData==null && {
     id: uniqueId(),
     title: 'Inicio de Sesión',
     icon: IconLogin,
     href: '/auth/login',
   },
-  !isLoggedIn && {
+  localData==null && {
     id: uniqueId(),
     title: 'Registro',
     icon: IconUserPlus,

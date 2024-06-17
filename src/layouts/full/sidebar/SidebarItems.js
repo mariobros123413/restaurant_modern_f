@@ -10,7 +10,6 @@ const SidebarItems = () => {
   const { pathname } = useLocation();
   const pathDirect = pathname;
   const localData = window.localStorage.getItem('loggedFocusEvent');
-  const isLoggedIn = localData !== null;
 
   const handleLogout = () => {
     // Procedimiento para cerrar sesión, por ejemplo, limpiar localStorage
@@ -29,7 +28,7 @@ const SidebarItems = () => {
             // {/********If Sub Menu**********/}
             /* eslint no-else-return: "off" */
           } else if (item) {
-            if (item.title === 'Cerrar Sesión' && isLoggedIn) {
+            if (item.title === 'Cerrar Sesión' && localData!=null) {
               return (
                 <NavItem item={item} key={item.id} pathDirect={pathDirect} onClick={handleLogout}/>
               );

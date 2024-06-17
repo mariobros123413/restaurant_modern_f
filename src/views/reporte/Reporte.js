@@ -62,7 +62,7 @@ const Reportes = () => {
         return (
             <>
                 <Grid container spacing={4}>
-                    {dataUsers.usuarios.map((user) => (
+                    {dataUsers.getUsers.map((user) => (
                         <Grid item xs={12} sm={6} md={4} key={user.id}>
                             <Card>
                                 <CardContent>
@@ -74,7 +74,7 @@ const Reportes = () => {
                         </Grid>
                     ))}
                 </Grid>
-                <Button variant="contained" color="primary" onClick={() => generatePDF(dataUsers.usuarios)}>Generar PDF</Button>
+                <Button variant="contained" color="primary" onClick={() => generatePDF(dataUsers.getUsers)}>Generar PDF</Button>
             </>
         );
     };
@@ -83,7 +83,7 @@ const Reportes = () => {
         if (errorFacturas) return <Typography>Error al cargar facturas: {errorFacturas.message}</Typography>;
 
         // Filtrar facturas por fecha
-        const filteredFacturas = dataFacturas.facturas.filter(factura => {
+        const filteredFacturas = dataFacturas.getFacturas.filter(factura => {
             const facturaDate = new Date(factura.fecha);
             return facturaDate >= new Date(startDate) && facturaDate <= new Date(endDate);
         });
