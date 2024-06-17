@@ -3,7 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 
 // Define el link HTTP para conectar con el servidor GraphQL
 const httpLink = createHttpLink({
-  uri: 'http://localhost:8080/graphql',
+  uri: 'https://restaurant-modern-23.fly.dev/graphql',
 });
 
 // Define el link de autenticación para agregar el token a los headers
