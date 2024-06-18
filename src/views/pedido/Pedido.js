@@ -8,7 +8,6 @@ import 'jspdf-autotable';
 import FACTURA_MUTATION from 'src/graphql/factura_mutations';
 import { useMutation } from '@apollo/client';
 const Pedido = () => {
-  const [asistencias, setAsistencias] = useState([]);
   const [precios, setPrecios] = useState([]);
   const [preciosb, setPreciosb] = useState([]);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -18,6 +17,15 @@ const Pedido = () => {
   const [createFactura] = useMutation(FACTURA_MUTATION);
   const [preciosCompletos, setPreciosCompletos] = useState(false);
   const [preciosCompletosb, setPreciosCompletosb] = useState(false);
+  const [pedidos, setPedidos] = useState([]);
+  const [pageSizeInput, setPageSizeInput] = useState(''); // Estado para el input de tamaño de página
+
+  var [paginaInfo, setPaginaInfo] = useState({
+    totalPaginas: 0,
+    totalElementos: 0,
+    paginaActual: 0,
+    pageSize: 5, // Tamaño de página predeterminado
+  });
 
   const handleOpenModal = (pedido) => {
     setPedidoSeleccionado(pedido);
@@ -28,15 +36,55 @@ const Pedido = () => {
     setOpenModal(false);
   };
   useEffect(() => {
-    obtenerAsistencias();
+    obtenerPedidos(0);
   }, []);
-  const obtenerAsistencias = async () => {
-    try {
-      const response = await api.get(`/pedido`);
 
-      setAsistencias(response.data);
+  const obtenerPedidos = async (page) => {
+    try {
+      console.log("Pagina que necesito : " + paginaInfo.pageSize);
+
+      const response = await api.get(`/pedido/paginacion?page=${page}&size=${paginaInfo.pageSize}`);
+      setPedidos(response.data.data); // Aquí asumo que la API devuelve un objeto con 'data' como arreglo de pedidos
+      setPaginaInfo((prevPaginaInfo) => ({
+        ...prevPaginaInfo,
+        totalPaginas: response.data.paginaInfo.totalPaginas,
+        totalElementos: response.data.paginaInfo.totalElementos,
+        paginaActual: response.data.paginaInfo.paginaActual,
+      }));
     } catch (error) {
-      console.error('Error al obtener eventos:', error);
+      console.error('Error al obtener pedidos:', error);
+    }
+  };
+  const handlePaginaAnterior = () => {
+    if (paginaInfo.paginaActual > 0) {
+      obtenerPedidos(parseInt(paginaInfo.paginaActual) - 1); // Restar 1 a la página actual
+    }
+  };
+
+  const handlePaginaSiguiente = () => {
+    if (paginaInfo.paginaActual < parseInt(paginaInfo.totalPaginas) - 1) {
+      obtenerPedidos(parseInt(paginaInfo.paginaActual) + 1); // Sumar 1 a la página actual
+    }
+  };
+  const handlePageSizeChange = (event) => {
+    setPageSizeInput(event.target.value);
+  };
+
+  const handleSubmitPageSize = () => {
+    if (pageSizeInput.trim() !== '') {
+      const newPageSize = parseInt(pageSizeInput, 10); // Convertir a número
+      if (!isNaN(newPageSize) && newPageSize > 0) {
+        console.log(newPageSize)
+        setPaginaInfo((prevPaginaInfo) => ({
+          ...prevPaginaInfo,
+          pageSize: newPageSize,
+        }));
+        console.log(paginaInfo.pageSize)
+
+        obtenerPedidos(0); // Volver a obtener los pedidos con la nueva página 0
+      } else {
+        console.error('Tamaño de página no válido');
+      }
     }
   };
   const parsePlato = (platoString) => {
@@ -195,11 +243,22 @@ const Pedido = () => {
     <PageContainer title="Pedidos" description="recuerda tus asistencias">
 
       <DashboardCard title="Tus Pedidos">
+        <TextField
+          label="Tamaño de página"
+          variant="outlined"
+          type="number"
+          value={pageSizeInput}
+          onChange={handlePageSizeChange}
+          style={{ marginRight: '10px' }}
+        />
+        <Button variant="contained" color="primary" onClick={handleSubmitPageSize}>
+          Aplicar
+        </Button>
         {/* <Button color="primary" variant="contained" size="large" onClick={handleOpenCreate}>
           Registrar Pedido +
         </Button> */}
         {/* Bucle para mostrar tarjetas de eventos */}
-        {asistencias.map((pedido) => (
+        {pedidos.map((pedido) => (
           <Card key={pedido.nro_pedido} style={{ marginTop: '16px' }} >
             <CardContent>
               <Typography variant="h5" component="div">
@@ -223,6 +282,20 @@ const Pedido = () => {
             </CardActions>
           </Card>
         ))}
+        {/* Controles de paginación */}
+        {paginaInfo && (
+          <div style={{ marginTop: '16px', textAlign: 'center' }}>
+            <Button disabled={paginaInfo.paginaActual === 0} onClick={handlePaginaAnterior}>
+              Anterior
+            </Button>
+            <Typography style={{ margin: '0 16px', display: 'inline-block' }}>
+              Página {parseInt(paginaInfo.paginaActual) + 1} de {paginaInfo.totalPaginas}
+            </Typography>
+            <Button disabled={paginaInfo.paginaActual === paginaInfo.totalPaginas - 1} onClick={handlePaginaSiguiente}>
+              Siguiente
+            </Button>
+          </div>
+        )}
       </DashboardCard>
 
 
