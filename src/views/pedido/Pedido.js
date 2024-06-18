@@ -24,7 +24,7 @@ const Pedido = () => {
     totalPaginas: 0,
     totalElementos: 0,
     paginaActual: 0,
-    pageSize: 5, // Tamaño de página predeterminado
+    pageSize: 10, // Tamaño de página predeterminado
   });
 
   const handleOpenModal = (pedido) => {
