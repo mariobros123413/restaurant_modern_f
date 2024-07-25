@@ -88,7 +88,7 @@ const Mesa = () => {
         try {
             const response = await createMesa({
                 variables: {
-                    id_usuario: "9048959189705224976", // Suponiendo que el ID del usuario viene del evento seleccionado
+                    id_usuario: "8102396616383947215", // Suponiendo que el ID del usuario viene del evento seleccionado
                     nro: parseInt(nombre, 10), // Suponiendo que estás usando nombreEdited como número
                     capacidad: parseInt(descripcion, 10), // Asegúrate de convertirlo a Int
                     disponible: true // Convierte la disponibilidad a booleano

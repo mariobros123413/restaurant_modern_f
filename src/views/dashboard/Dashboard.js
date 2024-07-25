@@ -22,7 +22,7 @@ const Dashboard = () => {
   return (
     <DashboardCard title="Bienvenido al Dashboard">
       <iframe
-        src="https://diagramapy-v1-1.onrender.com/"
+        src="https://restaurant-dashboard.up.railway.app/"
         title="Dashboard"
         width="100%"
         height="800px"

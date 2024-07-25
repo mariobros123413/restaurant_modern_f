@@ -144,17 +144,16 @@ const Pedido = () => {
 
       const platosConPrecio = platos.map((item, index) => {
         const cantidad = item.cantidad;
-        const precio = parseFloat(precios[index]); // Obtener el precio del input
+        const precio = parseFloat(precios[index]); 
         const total = cantidad * precio;
-        return { ...item, precio, total }; // Agregar precio y total al objeto del plato
+        return { ...item, precio, total }; 
       });
 
-      // Recorrer las bebidas (si es necesario) y calcular el total por cada una
       const bebidasConPrecio = bebidas.map((item, index) => {
         const cantidad = item.cantidad;
-        const precio = parseFloat(precios[index]); // Obtener el precio del input
+        const precio = parseFloat(preciosb[index]);
         const total = cantidad * precio;
-        return { ...item, precio, total }; // Agregar precio y total al objeto del plato    
+        return { ...item, precio, total }; 
       });
       // Calcular el total de todos los platos
       const totalPlatos = platosConPrecio.reduce((total, plato) => total + (plato.cantidad * plato.precio), 0);
@@ -167,7 +166,7 @@ const Pedido = () => {
       console.log("TOTAL : " + totalGeneral)
       const response = await createFactura({
         variables: {
-          id_usuario: "9048959189705224976",
+          id_usuario: "8102396616383947215",
           total: totalGeneral,
           fecha: fechaActual,
           pedido: pedido
@@ -175,7 +174,7 @@ const Pedido = () => {
       });
       const doc = new jsPDF();
       let yPos = 20;
-      doc.text(`Detalles del Pedido : ${response.data.createFactura.id}`, 10, 10);
+      doc.text(`Detalles del Pedido : ${response.data.createFactura.nro}`, 10, 10);
       doc.setFontSize(12);
 
       // Agregar platos a la tabla
@@ -334,7 +333,7 @@ const Pedido = () => {
                     type="number"
                     InputProps={{ inputProps: { min: 0 } }}
                     // Aquí puedes manejar el estado del precio y actualizarlo según sea necesario
-                    value={precios[index]}
+                    value={precios[index] ?? ''}
                     onChange={(e) => handlePrecioChange(e.target.value, index)}
                     required
                   />
@@ -350,7 +349,7 @@ const Pedido = () => {
                     type="number"
                     InputProps={{ inputProps: { min: 0 } }}
                     // Aquí puedes manejar el estado del precio y actualizarlo según sea necesario
-                    value={preciosb[index]}
+                    value={preciosb[index] ?? ''}
                     onChange={(e) => handlePrecioChangeb(e.target.value, index)}
                     required
                   />
