@@ -166,7 +166,7 @@ const Pedido = () => {
       console.log("TOTAL : " + totalGeneral)
       const response = await createFactura({
         variables: {
-          id_usuario: "8102396616383947215",
+          id_usuario: "9048959189705224976",
           total: totalGeneral,
           fecha: fechaActual,
           pedido: pedido
